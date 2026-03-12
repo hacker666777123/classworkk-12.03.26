@@ -20,30 +20,21 @@ public:
     ~MainWindow();
 
 private slots:
-    void onAddPointClicked();
-    void onRemovePointClicked();
-    void onCalculateClicked();
-    void onClearAllClicked();
+    void onGenerateMatrixClicked();
+    void onFindPathClicked();
+    void onRandomizeMatrixClicked();
+    void onClearMatrixClicked();
 
 private:
     Ui::MainWindow *ui;
 
-    struct Point {
-        double x;
-        double y;
-        Point(double x = 0, double y = 0) : x(x), y(y) {}
-    };
+    int N;
+    QVector<QVector<double> > adjacencyMatrix;
 
-    QVector<Point> points;
-
-    bool isSelfIntersecting();
-    double calculatePerimeter();
-    bool canDrawWithoutLifting();
-    double crossProduct(const Point &a, const Point &b, const Point &c);
-    bool onSegment(const Point &p, const Point &a, const Point &b);
-    bool segmentsIntersect(const Point &a1, const Point &a2, const Point &b1, const Point &b2);
-    double distance(const Point &a, const Point &b);
     void updateTable();
+    void dijkstra(int start, int end);
+    bool validateMatrix();
+    void log(const QString &message);
 };
 
 #endif

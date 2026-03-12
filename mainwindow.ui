@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>900</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Polygon Analysis</string>
+   <string>Dijkstra's Algorithm - Shortest Path Finder</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -20,65 +20,109 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QLabel" name="labelInput">
+         <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>Point Input:</string>
+           <string>Graph Parameters:</string>
+          </property>
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
           </property>
          </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="labelX">
+           <widget class="QLabel" name="label">
             <property name="text">
-             <string>X:</string>
+             <string>Number of vertices:</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEditX"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelY">
-            <property name="text">
-             <string>Y:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditY"/>
+           <widget class="QSpinBox" name="spinBoxVertices"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonGenerate">
+          <property name="text">
+           <string>Generate Matrix</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonRandomize">
+          <property name="text">
+           <string>Random Fill</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonClear">
+          <property name="text">
+           <string>Clear Matrix</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Path Finding:</string>
+          </property>
+          <property name="font">
+           <font>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QPushButton" name="pushButtonAdd">
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Add Point</string>
+             <string>Start vertex:</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButtonRemove">
-            <property name="text">
-             <string>Remove Last</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonClear">
-            <property name="text">
-             <string>Clear All</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEditStart"/>
           </item>
          </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonCalculate">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>End vertex:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditEnd"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonFind">
           <property name="text">
-           <string>Calculate</string>
+           <string>Find Shortest Path</string>
           </property>
           <property name="font">
            <font>
@@ -108,54 +152,23 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="labelSelfIntersecting">
-          <property name="text">
-           <string>Self-intersecting:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEditSelfIntersecting">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="labelPerimeter">
-          <property name="text">
-           <string>Perimeter:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEditPerimeter">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="labelDrawWithoutLifting">
-          <property name="text">
-           <string>Can draw without lifting:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEditDrawWithoutLifting">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <widget class="QTextEdit" name="textEditConsole">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier New</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
